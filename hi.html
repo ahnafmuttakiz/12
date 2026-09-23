@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Message For You ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd6e7, #d9e7ff);
+            overflow: hidden;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 500px;
+            padding: 35px 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+        }
+
+        h1 {
+            color: #ff4f81;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #444;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        button {
+            border: none;
+            padding: 13px 25px;
+            margin: 10px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #sorryBtn {
+            background: #ff5c8a;
+            color: white;
+        }
+
+        #sorryBtn:hover {
+            transform: scale(1.08);
+        }
+
+        #spaceBtn {
+            background: #eeeeee;
+            color: #444;
+        }
+
+        #message {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 25px;
+            animation: floatUp 5s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>Hey ❤️</h1>
+
+        <p>
+            I know you might be upset with me.
+        </p>
+
+        <p>
+            I'm really sorry if I did something that hurt you.
+            I don't want to pressure you to reply.
+        </p>
+
+        <button id="sorryBtn" onclick="showSorry()">
+            Click this 💗
+        </button>
+
+        <button id="spaceBtn" onclick="giveSpace()">
+            You can take your time 🌸
+        </button>
+
+        <div id="message">
+            <p>
+                I just want you to know that I care about you.
+                Take all the time you need. ❤️
+            </p>
+
+            <p>
+                Whenever you're ready, I'll listen.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showSorry() {
+
+            document.getElementById("message").style.display = "block";
+
+            for (let i = 0; i < 20; i++) {
+                createHeart();
+            }
+        }
+
+        function giveSpace() {
+
+            document.querySelector("h1").innerText = "Take your time 🌸";
+
+            document.querySelector("p").innerText =
+                "You don't have to reply right now. I'll give you some space.";
+
+            document.getElementById("sorryBtn").style.display = "none";
+            document.getElementById("spaceBtn").style.display = "none";
+        }
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+    </script>
+
+</body>
+</html>
